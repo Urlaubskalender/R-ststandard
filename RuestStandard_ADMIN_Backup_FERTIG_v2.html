@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08111f">
+<title>RüstStandard</title>
+<style>
+:root{--bg:#f3f6fa;--panel:#fff;--ink:#142033;--muted:#718096;--line:#e1e8f0;--nav:#08111f;--nav2:#101c2d;--blue:#12a5e5;--blue2:#0781b8;--green:#16a34a;--red:#dc2626;--orange:#d97706}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}
+header{height:70px;background:var(--nav);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:20}.logo{font-size:22px;font-weight:850}.logo span{color:#58d8ff}.headRight{display:flex;gap:9px;align-items:center}.status{font-size:12px;padding:7px 10px;background:#18263b;border-radius:999px;font-weight:700}
+.layout{display:flex;min-height:calc(100vh - 70px)}aside{width:240px;background:var(--nav2);padding:14px 10px;color:#cbd5e1;flex:none}.nav{width:100%;display:block;border:0;background:none;color:#cbd5e1;padding:13px;border-radius:11px;text-align:left;font-weight:750;margin:3px 0}.nav:hover,.nav.active{background:#1d2c43;color:#fff}.navIcon{font-size:21px;display:inline-block;line-height:1}.adminTop{background:#12a5e5;color:#fff!important;min-width:116px}
+main{width:100%;max-width:1500px;margin:auto;padding:25px}.hero{border-radius:24px;padding:31px;background:linear-gradient(135deg,#08111f,#174c6c);color:#fff;margin-bottom:18px}.eyebrow{font-size:12px;letter-spacing:.13em;font-weight:850;color:#a6e7ff}.hero h1{font-size:36px;margin:8px 0}.hero p{color:#d7e3ed;max-width:850px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:19px;box-shadow:0 7px 25px #14203309}.bigChoice{padding:28px;text-align:left;min-height:150px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 7px 25px #1420330b}.bigChoice:hover{border-color:var(--blue);transform:translateY(-1px)}.bigChoice h2{margin:8px 0}.green{border-left:6px solid var(--green)}.red{border-left:6px solid var(--red)}
+.btn{border:0;border-radius:10px;padding:10px 14px;font-weight:800}.primary{background:var(--blue);color:#fff}.primary:hover{background:var(--blue2)}.secondary{background:#eaf0f6;color:#172033}.danger{background:#fee2e2;color:#b91c1c}.warning{background:#fff2d8;color:#955a00}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.muted{color:var(--muted)}.small{font-size:12px}
+.search{width:100%;border:1px solid #d5dfe9;border-radius:12px;padding:14px;background:#fff;outline:0;margin-bottom:14px}.list{display:grid;gap:11px}.item{background:#fff;border:1px solid var(--line);border-radius:15px;padding:16px;display:flex;justify-content:space-between;align-items:center;gap:15px}.itemTitle{font-weight:850}.tag{display:inline-block;border-radius:999px;background:#e4f5fd;color:#056995;padding:4px 8px;font-size:11px;font-weight:750;margin:3px 3px 0 0}
+.modal{position:fixed;inset:0;background:#030914bd;display:flex;align-items:center;justify-content:center;padding:14px;z-index:100}.box{width:min(1000px,100%);max-height:94vh;overflow:auto;background:#fff;border-radius:20px;padding:21px}.modalHead{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.close{border:0;background:#edf2f6;border-radius:9px;padding:8px 11px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:800}.field input,.field textarea,.field select{border:1px solid #d4dee8;border-radius:10px;padding:10px 11px;background:#fff;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #12a5e51a}.field textarea{min-height:110px;resize:vertical}
+.step{border:1px solid var(--line);background:#f8fafc;border-radius:15px;padding:15px;margin:12px 0}.stepHead{display:flex;justify-content:space-between;align-items:center;gap:10px}.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:9px;margin-top:10px}.thumb{position:relative}.thumb img{width:100%;height:100px;object-fit:cover;border-radius:10px;background:#edf2f6}.thumb button{position:absolute;right:4px;top:4px;border:0;border-radius:6px;background:#fff;padding:2px 7px}.drop{border:2px dashed #c9d5e1;border-radius:11px;padding:12px}
+.wizard{max-width:900px}.progress{height:7px;background:#e3e9ef;border-radius:8px;overflow:hidden}.progress i{display:block;height:100%;background:var(--blue)}.wimg{width:100%;max-height:440px;object-fit:contain;background:#edf2f6;border-radius:12px;margin-top:10px}.check{display:flex;align-items:center;gap:9px;background:#edf8fe;border-radius:10px;padding:12px;margin-top:15px;font-weight:750}.check input{width:20px;height:20px}.special{background:#fff7e6;border:1px solid #f0d092;border-radius:12px;padding:13px;margin-top:12px}.special b{color:#8a5700}.error{background:#fff0f0;border:1px solid #efc8c8;border-radius:12px;padding:13px}
+.empty{text-align:center;padding:42px;color:var(--muted);background:#fff;border:1px dashed #ccd7e2;border-radius:15px}
+@media(max-width:820px){aside{width:67px}.nav{font-size:0;text-align:center}.navIcon{font-size:22px}.main{padding:14px}.form{grid-template-columns:1fr}.field.full{grid-column:auto}.hero{padding:23px}.hero h1{font-size:29px}.item{align-items:flex-start;flex-direction:column}.headRight .status{display:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+"use strict";
+const DB="RuestStandard_BigBackup_v1";
+let state={version:1,standards:[],tools:[],errors:[]};
+let editing=null, currentType=null, objectUrls=[];
+
+function esc(v=""){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function uid(){return"i_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2)}
+function clone(v){return JSON.parse(JSON.stringify(v))}
+function tags(a=[]){return a.filter(Boolean).map(x=>`<span class="tag">${esc(x)}</span>`).join("")}
+function db(){return new Promise((ok,no)=>{let r=indexedDB.open(DB,1);r.onupgradeneeded=()=>r.result.createObjectStore("kv");r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)})}
+async function get(k){try{let d=await db();return await new Promise((ok,no)=>{let q=d.transaction("kv","readonly").objectStore("kv").get(k);q.onsuccess=()=>ok(q.result);q.onerror=()=>no(q.error)})}catch{return null}}
+async function set(k,v){let d=await db();return new Promise((ok,no)=>{let t=d.transaction("kv","readwrite");t.objectStore("kv").put(v,k);t.oncomplete=ok;t.onerror=()=>no(t.error)})}
+async function save(){await set("state",state)}
+function shell(active,body){document.getElementById("app").innerHTML=`
+<header><div class="logo">⚙️ Rüst<span>Standard</span></div><div class="headRight"><span class="status">● Offline gespeichert</span><button class="btn adminTop" onclick="openAdmin()">⚙️ ADMIN</button><button class="btn secondary" onclick="backup()">⬇ Backup</button></div></header>
+<div class="layout"><aside>
+<button class="nav ${active=="home"?"active":""}" onclick="home()"><span class="navIcon">🏠</span> <span>Start</span></button>
+<button class="nav ${active=="search"?"active":""}" onclick="search()"><span class="navIcon">🔎</span> <span>Suche</span></button>
+</aside><main>${body}</main></div>`}
+
+function home(){shell("home",`
+<section class="hero"><div class="eyebrow">PRESSWERK • RÜSTSTANDARD</div><h1>Wie wird umgebaut?</h1><p>Wähle zuerst den Umbautyp. Danach beginnt direkt die hinterlegte Anleitung mit Einleitung, Texten und Bildern.</p></section>
+<div class="grid">
+<button class="bigChoice green" onclick="chooseType('plan')"><div class="eyebrow" style="color:#16803b">PLANMÄSSIG</div><h2>🟢 Planmäßiger Umbau</h2><div class="muted">Geplanter, vorbereiteter Umbau.</div></button>
+<button class="bigChoice red" onclick="chooseType('unplan')"><div class="eyebrow" style="color:#c32626">UNPLANMÄSSIG</div><h2>🔴 Unplanmäßiger Umbau</h2><div class="muted">Umbau aufgrund einer ungeplanten Situation.</div></button>
+</div>
+<div class="card" style="margin-top:16px"><h3>Rüststandard</h3><p class="muted">Die Anleitung selbst ist unabhängig von einer bestimmten Presse. Werkzeuge oder Artikel werden nur dort ergänzt, wo eine Besonderheit notwendig ist.</p></div>`)}
+function chooseType(type){
+ currentType=type;
+ const arr=state.standards.filter(s=>s.type===type);
+ shell("home",`<section class="hero"><div class="eyebrow">${type==="plan"?"PLANMÄSSIGER":"UNPLANMÄSSIGER"} UMBAU</div><h1>Anleitung auswählen</h1><p>Wähle den passenden Rüststandard.</p></section>
+ <div class="list">${arr.map(s=>`<div class="item"><div><div class="itemTitle">${esc(s.name)}</div><div class="muted">${esc(s.intro)}</div><div>${tags(s.tags)}</div></div><button class="btn primary" onclick="startGuide('${s.id}')">Starten →</button></div>`).join("")||'<div class="empty">Noch keine Anleitung vorhanden. Im Admin-Menü kannst du eine erstellen.</div>'}</div>
+ <div class="actions"><button class="btn secondary" onclick="home()">← Zurück</button></div>`);
+}
+
+function openAdmin(){
+ document.getElementById("adminLogin")?.remove();
+ document.body.insertAdjacentHTML("beforeend",`<div class="modal" id="adminLogin">
+  <div class="box" style="max-width:430px">
+   <div class="modalHead"><h2 style="margin:0">🔐 Admin-Bereich</h2><button class="close" onclick="document.getElementById('adminLogin').remove()">✕</button></div>
+   <p class="muted">Bitte Admin-Passwort eingeben.</p>
+   <div class="field"><label>Passwort</label><input id="adminPassword" type="password" inputmode="numeric" autocomplete="off" placeholder="Passwort" onkeydown="if(event.key==='Enter')checkAdminPassword()"></div>
+   <div class="actions"><button class="btn secondary" onclick="document.getElementById('adminLogin').remove()">Abbrechen</button><button class="btn primary" onclick="checkAdminPassword()">🔓 Anmelden</button></div>
+   <div id="adminError" class="small" style="color:#dc2626;margin-top:10px"></div>
+  </div>
+ </div>`);
+ setTimeout(()=>document.getElementById("adminPassword")?.focus(),50);
+}
+function checkAdminPassword(){
+ const input=document.getElementById("adminPassword");
+ const error=document.getElementById("adminError");
+ if(!input)return;
+ if(input.value==="1234"){
+  document.getElementById("adminLogin")?.remove();
+  admin();
+ }else{
+  error.textContent="Falsches Passwort.";
+  input.value="";
+  input.focus();
+ }
+}
+function admin(){shell("admin",`
+<section class="hero"><div class="eyebrow">ADMINISTRATION</div><h1>Rüststandards verwalten</h1><p>Hier werden die Anleitungen aufgebaut. Einleitung, Texte, Schritte und Bilder gehören direkt zum Rüststandard.</p></section>
+<div class="grid">
+<div class="card"><h3>🟢 Planmäßiger Umbau</h3><div class="stat">${state.standards.filter(x=>x.type==="plan").length}</div><button class="btn primary" onclick="standardList('plan')">Verwalten</button></div>
+<div class="card"><h3>🔴 Unplanmäßiger Umbau</h3><div class="stat">${state.standards.filter(x=>x.type==="unplan").length}</div><button class="btn primary" onclick="standardList('unplan')">Verwalten</button></div>
+<div class="card"><h3>🔧 Werkzeuge / Artikel</h3><div class="stat">${state.tools.length}</div><button class="btn primary" onclick="toolList()">Verwalten</button></div>
+<div class="card"><h3>🚨 Typische Fehler</h3><div class="stat">${state.errors.length}</div><button class="btn primary" onclick="errorList()">Verwalten</button></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>💾 Datensicherung</h3><p class="muted"><b>Wichtig:</b> Das Backup enthält die Texte, Schritte und die tatsächlichen Bilddaten. Die Bilder hängen nicht vom Browser-Cache ab.</p><div class="actions"><button class="btn primary" onclick="backup()">⬇ Vollständiges Backup erstellen</button><button class="btn secondary" onclick="restore()">⬆ Vollständiges Backup wiederherstellen</button><button class="btn secondary" onclick="backupCheck()">✓ Backup prüfen</button></div></div>`)}
+function standardList(type){const title=type==="plan"?"Planmäßige Umbauten":"Unplanmäßige Umbauten";modal(title,`<button class="btn primary" onclick="standardForm('', '${type}')">＋ Anleitung erstellen</button><div class="list" style="margin-top:12px">${state.standards.filter(s=>s.type===type).map(s=>`<div class="item"><div><div class="itemTitle">${esc(s.name)}</div><div class="muted">${s.steps.length} Schritte</div></div><div class="actions" style="margin:0"><button class="btn secondary" onclick="standardForm('${s.id}')">Bearbeiten</button><button class="btn danger" onclick="deleteStandard('${s.id}')">Löschen</button></div></div>`).join("")||'<div class="empty">Noch keine Anleitung vorhanden.</div>'}</div>`)}
+function standardForm(id,type){
+ const s=id?state.standards.find(x=>x.id===id):{id:uid(),type:type||"plan",name:"",intro:"",tags:[],steps:[]};
+ editing=clone(s);
+ modal(id?"Anleitung bearbeiten":"Neue Anleitung",`
+ <div class="form">
+ <div class="field"><label>Art</label><select id="sfType"><option value="plan" ${s.type==="plan"?"selected":""}>Planmäßiger Umbau</option><option value="unplan" ${s.type==="unplan"?"selected":""}>Unplanmäßiger Umbau</option></select></div>
+ <div class="field"><label>Titel der Anleitung</label><input id="sfName" value="${esc(s.name)}" placeholder="z. B. Werkzeugwechsel"></div>
+ <div class="field full"><label>Einleitung / Starttext</label><textarea id="sfIntro" placeholder="Was muss der Mitarbeiter vor Beginn wissen?">${esc(s.intro)}</textarea></div>
+ <div class="field full"><label>Suchbegriffe</label><input id="sfTags" value="${esc(s.tags.join(", "))}" placeholder="z. B. Werkzeugwechsel, Umbau, Greifer"></div>
+ </div>
+ <h3>Schritte und Bilder</h3><p class="muted small">Jeder Schritt kann beliebig viele Bilder enthalten. Die Bilddaten werden im Backup mitgesichert.</p>
+ <div id="steps">${stepEditors(s.steps)}</div>
+ <div class="actions"><button class="btn secondary" onclick="addStep()">＋ Schritt</button><button class="btn primary" onclick="saveStandard()">Speichern</button></div>`);
+}
+function stepEditors(arr){return arr.map((s,i)=>`<div class="step"><div class="stepHead"><b>Schritt ${i+1}</b><button class="btn danger" onclick="removeStep(${i})">Löschen</button></div><div class="form" style="margin-top:10px"><div class="field full"><label>Überschrift</label><input class="stepTitle" data-i="${i}" value="${esc(s.title)}" placeholder="z. B. Werkzeug lösen"></div><div class="field full"><label>Anweisung / Text</label><textarea class="stepText" data-i="${i}" placeholder="Genaue Beschreibung des Arbeitsschrittes">${esc(s.text)}</textarea></div><div class="field full"><label>Bilder</label><div class="drop"><input type="file" accept="image/*" multiple onchange="addImages(${i},this)"><div class="small muted">${s.images.length} Bild(er) gespeichert</div></div><div class="thumbs">${s.images.map((im,j)=>`<div class="thumb"><img src="${esc(im)}"><button onclick="removeImage(${i},${j})">×</button></div>`).join("")}</div></div></div></div>`).join("")||'<div class="empty">Noch keine Schritte. Klicke auf „＋ Schritt“.</div>'}
+function sync(){if(!editing)return;document.querySelectorAll(".stepTitle").forEach(x=>{let i=+x.dataset.i;if(editing.steps[i])editing.steps[i].title=x.value});document.querySelectorAll(".stepText").forEach(x=>{let i=+x.dataset.i;if(editing.steps[i])editing.steps[i].text=x.value})}
+async function addImages(i,input){sync();for(const f of [...input.files])editing.steps[i].images.push(await dataURL(f));standardForm(editing.id)}
+function addStep(){sync();editing.steps.push({title:"",text:"",images:[]});standardForm(editing.id)}
+function removeStep(i){sync();editing.steps.splice(i,1);standardForm(editing.id)}
+function removeImage(i,j){sync();editing.steps[i].images.splice(j,1);standardForm(editing.id)}
+async function saveStandard(){sync();editing.type=document.getElementById("sfType").value;editing.name=document.getElementById("sfName").value.trim();editing.intro=document.getElementById("sfIntro").value;editing.tags=document.getElementById("sfTags").value.split(",").map(x=>x.trim()).filter(Boolean);if(!editing.name){alert("Bitte einen Titel eingeben.");return}const i=state.standards.findIndex(x=>x.id===editing.id);if(i>=0)state.standards[i]=editing;else state.standards.push(editing);await save();closeModal();standardList(editing.type)}
+
+function toolList(){modal("🔧 Werkzeuge / Artikel",`<button class="btn primary" onclick="toolForm()">＋ Werkzeug / Artikel</button><div class="list" style="margin-top:12px">${state.tools.map(t=>`<div class="item"><div><div class="itemTitle">${esc(t.name)}</div>${tags(t.tags)}</div><button class="btn secondary" onclick="toolForm('${t.id}')">Bearbeiten</button></div>`).join("")||'<div class="empty">Noch keine Werkzeuge hinterlegt.</div>'}</div>`)}
+function toolForm(id){const t=id?state.tools.find(x=>x.id===id):{id:uid(),name:"",article:"",tags:[]};modal(id?"Werkzeug / Artikel bearbeiten":"Werkzeug / Artikel",`<div class="form"><div class="field"><label>Bezeichnung</label><input id="tn" value="${esc(t.name)}"></div><div class="field"><label>Artikelnummer</label><input id="ta" value="${esc(t.article)}"></div><div class="field full"><label>Suchbegriffe</label><input id="tt" value="${esc(t.tags.join(", "))}"></div></div><div class="actions"><button class="btn primary" onclick="saveTool('${id||""}')">Speichern</button></div>`)}
+async function saveTool(id){const t=id?state.tools.find(x=>x.id===id):{id:uid()};t.name=document.getElementById("tn").value.trim();t.article=document.getElementById("ta").value.trim();t.tags=document.getElementById("tt").value.split(",").map(x=>x.trim()).filter(Boolean);if(!t.name){alert("Bitte Bezeichnung eingeben.");return}if(!id)state.tools.push(t);await save();closeModal();toolList()}
+function errorList(){modal("🚨 Typische Fehler",`<button class="btn primary" onclick="errorForm()">＋ Fehlerbild</button><div class="list" style="margin-top:12px">${state.errors.map(e=>`<div class="item"><div><div class="itemTitle">${esc(e.title)}</div><div class="muted">${esc(e.symptom)}</div>${tags(e.tags)}</div><button class="btn secondary" onclick="errorForm('${e.id}')">Bearbeiten</button></div>`).join("")||'<div class="empty">Noch keine Fehlerbilder.</div>'}</div>`)}
+function errorForm(id){const e=id?state.errors.find(x=>x.id===id):{id:uid(),title:"",symptom:"",solution:"",tags:[]};modal(id?"Fehlerbild bearbeiten":"Neues Fehlerbild",`<div class="form"><div class="field full"><label>Fehler</label><input id="et" value="${esc(e.title)}"></div><div class="field full"><label>Symptom</label><textarea id="es">${esc(e.symptom)}</textarea></div><div class="field full"><label>Vorgehen / Lösung</label><textarea id="el">${esc(e.solution)}</textarea></div><div class="field full"><label>Suchbegriffe</label><input id="eg" value="${esc(e.tags.join(", "))}"></div></div><div class="actions"><button class="btn primary" onclick="saveError('${id||""}')">Speichern</button></div>`)}
+async function saveError(id){const e=id?state.errors.find(x=>x.id===id):{id:uid()};e.title=document.getElementById("et").value.trim();e.symptom=document.getElementById("es").value;e.solution=document.getElementById("el").value;e.tags=document.getElementById("eg").value.split(",").map(x=>x.trim()).filter(Boolean);if(!e.title){alert("Bitte Fehler eingeben.");return}if(!id)state.errors.push(e);await save();closeModal();errorList()}
+
+function startGuide(id){const s=state.standards.find(x=>x.id===id);if(!s)return;let i=0;const draw=()=>{document.getElementById("wiz")?.remove();const st=s.steps[i];document.body.insertAdjacentHTML("beforeend",`<div class="modal" id="wiz"><div class="box wizard"><div class="modalHead"><div><div class="small muted">${s.type==="plan"?"PLANMÄSSIGER":"UNPLANMÄSSIGER"} UMBAU</div><h2 style="margin:4px 0">${esc(s.name)}</h2></div><button class="close" onclick="document.getElementById('wiz').remove()">✕</button></div><div style="margin-top:14px"><div class="progress"><i style="width:${(i+1)/Math.max(s.steps.length,1)*100}%"></i></div><p class="small muted">Schritt ${i+1} von ${s.steps.length}</p><div class="card" style="box-shadow:none"><h2>${esc(st.title)}</h2><p style="white-space:pre-wrap;line-height:1.7">${esc(st.text)}</p>${st.images.map(x=>`<img class="wimg" src="${esc(x)}">`).join("")}</div><label class="check"><input id="wd" type="checkbox"> Schritt geprüft und erledigt</label><div class="actions"><button class="btn secondary" onclick="${i?`i--;draw()`:`document.getElementById('wiz').remove()`}">${i?"← Zurück":"Abbrechen"}</button><button class="btn primary" onclick="nextGuide()">${i<s.steps.length-1?"Nächster Schritt →":"✓ Umbau abschließen"}</button></div></div></div></div>`)};window.nextGuide=()=>{if(!document.getElementById("wd")?.checked){alert("Bitte den Schritt bestätigen.");return}if(i<s.steps.length-1){i++;draw()}else{document.getElementById("wiz").remove();alert("Umbau abgeschlossen.");}};draw()}
+
+function search(){shell("search",`<section class="hero"><div class="eyebrow">SCHNELLSUCHE</div><h1>Rüstwissen suchen</h1><p>Suche in Anleitungen, Werkzeugen und typischen Fehlern.</p></section><input id="q" class="search" placeholder="🔎 z. B. Werkzeugwechsel, 408-03, Greifer, VDP..." oninput="doSearch()"><div id="results"></div>`)}
+function doSearch(){const q=document.getElementById("q").value.toLowerCase().trim();if(!q){results.innerHTML='<div class="empty">Suchbegriff eingeben.</div>';return}let a=[];state.standards.forEach(s=>{if(JSON.stringify(s).toLowerCase().includes(q))a.push(`<div class="item"><div><div class="itemTitle">📋 ${esc(s.name)}</div><div class="muted">${s.type==="plan"?"Planmäßiger":"Unplanmäßiger"} Umbau</div></div><button class="btn primary" onclick="startGuide('${s.id}')">Öffnen →</button></div>`)});state.tools.forEach(t=>{if(JSON.stringify(t).toLowerCase().includes(q))a.push(`<div class="item"><div><div class="itemTitle">🔧 ${esc(t.name)}</div>${tags(t.tags)}</div></div>`)});state.errors.forEach(e=>{if(JSON.stringify(e).toLowerCase().includes(q))a.push(`<div class="item"><div><div class="itemTitle">🚨 ${esc(e.title)}</div><div class="muted">${esc(e.symptom)}</div></div></div>`)});results.innerHTML=a.length?`<div class="list">${a.join("")}</div>`:'<div class="empty">Nichts gefunden.</div>'}
+
+function modal(title,body){document.body.insertAdjacentHTML("beforeend",`<div class="modal" id="modal"><div class="box"><div class="modalHead"><h2 style="margin:0">${title}</h2><button class="close" onclick="closeModal()">✕</button></div><div style="margin-top:15px">${body}</div></div></div>`)}
+function closeModal(){document.getElementById("modal")?.remove()}
+function dataURL(f){return new Promise((ok,no)=>{let r=new FileReader();r.onload=()=>ok(r.result);r.onerror=no;r.readAsDataURL(f)})}
+
+function makeBackupPayload(){
+ return {format:"RuestStandardBackup",version:1,created:new Date().toISOString(),data:clone(state)};
+}
+function backup(){
+ /* Die Bilder liegen als vollständige Data-URLs im state und werden daher
+    zusammen mit Texten, Schritten, Standards, Werkzeugen und Fehlerbildern
+    in dieselbe JSON-Datei geschrieben. */
+ const payload=makeBackupPayload();
+ const text=JSON.stringify(payload);
+ const blob=new Blob([text],{type:"application/json;charset=utf-8"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="RuestStandard-Vollbackup.json";a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1500);
+}
+function countBackupImages(d){
+ return (d.standards||[]).reduce((n,s)=>n+(s.steps||[]).reduce((m,st)=>m+(st.images||[]).length,0),0);
+}
+function backupCheck(){
+ try{
+  const payload=makeBackupPayload();
+  const serialized=JSON.stringify(payload);
+  const restored=JSON.parse(serialized);
+  const d=restored.data;
+  if(!d||!Array.isArray(d.standards)||!Array.isArray(d.tools)||!Array.isArray(d.errors))throw new Error("Datenstruktur");
+  const originalImages=countBackupImages(state), restoredImages=countBackupImages(d);
+  if(originalImages!==restoredImages)throw new Error("Bilder");
+  /* Prüfen, dass jede Bilddatei als echte Data-URL erhalten bleibt. */
+  for(const s of d.standards)for(const st of (s.steps||[]))for(const img of (st.images||[])){
+   if(typeof img!=="string"||!img.startsWith("data:image/"))throw new Error("Bilddaten");
+  }
+  alert("Backup-Test erfolgreich.\\n\\n✓ Standards\\n✓ Schritte und Texte\\n✓ Werkzeuge / Artikel\\n✓ Fehlerbilder\\n✓ Alle "+restoredImages+" Bild(er)\\n\\nDie Daten lassen sich aus der Backup-Datei wieder einlesen.");
+ }catch(e){alert("Backup-Test fehlgeschlagen: "+e.message)}
+}
+function restore(){
+ const input=document.createElement("input");input.type="file";input.accept=".json,application/json";
+ input.onchange=()=>{const r=new FileReader();r.onload=async()=>{try{
+  const p=JSON.parse(r.result),d=p.data||p;
+  if(!d||!Array.isArray(d.standards)||!Array.isArray(d.tools)||!Array.isArray(d.errors))throw new Error("Ungültige Datenstruktur");
+  for(const s of d.standards)for(const st of (s.steps||[]))for(const img of (st.images||[])){
+   if(typeof img!=="string"||!img.startsWith("data:image/"))throw new Error("Ein Bild ist nicht vollständig im Backup enthalten");
+  }
+  state={...d,version:1};await save();home();alert("Backup vollständig wiederhergestellt – inklusive aller Bilder.");
+ }catch(e){alert("Backup konnte nicht geladen werden: "+e.message)}};r.readAsText(input.files[0])};input.click();
+}
+async function deleteStandard(id){if(!confirm("Anleitung wirklich löschen?"))return;state.standards=state.standards.filter(x=>x.id!==id);await save();closeModal();admin()}
+(async()=>{const s=await get("state");if(s&&s.version===1)state=s;home()})();
+</script>
+</body>
+</html>
